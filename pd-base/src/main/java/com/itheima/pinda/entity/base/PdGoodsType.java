@@ -9,13 +9,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * @author Zhang
- * @date 9/2/2021 2:10 PM
- * @description
- *
- * 货物类型
+ * @author Enbing
+ * @create 2021-09-01 10:13 PM
+ * @Description
+ * 货物类型实体
  */
-
 @Data
 @TableName("pd_goods_type")
 public class PdGoodsType implements Serializable {

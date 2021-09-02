@@ -21,17 +21,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig extends WebMvcConfigurationSupport {
 
-    // 定义分隔符
+    //定义分隔符
     private static final String splitor = ";";
     @Bean
     public Docket createRestApi() {
         // 文档类型
         return new Docket(DocumentationType.SWAGGER_2)
-                // 创建api的基本信息
+                //创建api的基本信息
                 .apiInfo(apiInfo())
-                // 选择哪些接口去暴露
+                //选择哪些接口去暴露
                 .select()
-                // 扫描的包
+                //扫描的包
                 .apis(RequestHandlerSelectors.basePackage("com.itheima.pinda.controller"))
                 .paths(PathSelectors.any())
                 .build();
@@ -49,8 +49,9 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
      *
      * @param registry
      */
+    @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // 解决静态资源无法访问
+        //解决静态资源无法访问
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
         // 解决swagger无法访问
         registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");

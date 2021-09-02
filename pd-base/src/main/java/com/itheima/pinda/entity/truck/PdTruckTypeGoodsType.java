@@ -8,11 +8,9 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author Zhang
- * @date 9/2/2021 2:12 PM
- * @description
- *
- * 车辆类型与货物类型关联
+ * @author Enbing
+ * @create 2021-09-01 10:16 PM
+ * @Description 车辆类型与货物类型关联
  */
 @Data
 @TableName("pd_truck_type_goods_type")
@@ -27,10 +25,8 @@ public class PdTruckTypeGoodsType implements Serializable {
      * 车辆类型id
      */
     private String truckTypeId;
-
     /**
      * 货物类型id
      */
     private String goodsTypeId;
-
 }
