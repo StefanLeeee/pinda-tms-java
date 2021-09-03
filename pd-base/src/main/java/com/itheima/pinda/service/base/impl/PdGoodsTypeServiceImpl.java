@@ -30,7 +30,7 @@ public class PdGoodsTypeServiceImpl extends ServiceImpl<PdGoodsTypeMapper, PdGoo
     public PdGoodsType saveGoodsType(PdGoodsType pdGoodsType) {
         //pdGoodsType.setId(idGenerator.nextId(pdGoodsType).toString());
         pdGoodsType.setId(idGenerator.nextId(pdGoodsType)+"");
-        getBaseMapper().insert(pdGoodsType);
+        baseMapper.insert(pdGoodsType);
         return null;
     }
 

@@ -2,7 +2,9 @@ package com.itheima.pinda.controller.base;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.itheima.pinda.DTO.base.GoodsTypeDto;
+import com.itheima.pinda.common.utils.Constant;
 import com.itheima.pinda.common.utils.PageResponse;
+import com.itheima.pinda.common.utils.Result;
 import com.itheima.pinda.entity.base.PdGoodsType;
 import com.itheima.pinda.entity.truck.PdTruckTypeGoodsType;
 import com.itheima.pinda.service.base.IPdGoodsTypeService;
@@ -11,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,9 +43,9 @@ public class GoodsTypeController {
      */
     @PostMapping("")
     @ApiOperation(value = "添加货物类型")
-    public GoodsTypeDto saveGoodsType(@RequestBody GoodsTypeDto dto) {
+    public GoodsTypeDto saveGoodsType(@Validated @RequestBody GoodsTypeDto dto) {
         PdGoodsType pdGoodsType = new PdGoodsType();
-        BeanUtils.copyProperties(dto,pdGoodsType);
+        BeanUtils.copyProperties(dto, pdGoodsType);
         pdGoodsType = goodsTypeService.saveGoodsType(pdGoodsType);
         String goodsTypeId = pdGoodsType.getId();
         if (dto.getTruckTypeIds() != null) {
@@ -70,10 +73,12 @@ public class GoodsTypeController {
         if (pdGoodsType != null) {
             dto = new GoodsTypeDto();
             BeanUtils.copyProperties(pdGoodsType, dto);
-            dto.setTruckTypeIds(truckTypeGoodsTypeService.findAll(null, dto.getId()).stream().map(truckTypeGoodsType -> truckTypeGoodsType.getTruckTypeId()).collect(Collectors.toList()));
+            dto.setTruckTypeIds(truckTypeGoodsTypeService.findAll(null, dto.getId()).stream().map(truckTypeGoodsType ->
+                    truckTypeGoodsType.getTruckTypeId()).collect(Collectors.toList()));
         }
         return dto;
     }
+
     /**
      * 查询所有货物类型
      * @return
@@ -158,5 +163,17 @@ public class GoodsTypeController {
         }
         return dto;
     }
+
+    @PutMapping("/{id}/disbale")
+    @ApiOperation(value = "删除货物类型")
+    public Result disable(@PathVariable(name = "id") String id) {
+        PdGoodsType pdGoodsType = new PdGoodsType();
+        pdGoodsType.setId(id);
+        pdGoodsType.setStatus(Constant.DATA_DISABLE_STATUS);
+        goodsTypeService.updateById(pdGoodsType);
+        return Result.ok();
+    }
+
+
 
 }
