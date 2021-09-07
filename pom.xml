@@ -25,6 +25,7 @@
         <module>pd-aggregation</module>
         <module>pd-druid</module>
         <module>pd-netty</module>
+        <module>rex-j2cachedemo</module>
     </modules>
     <version>1.0.0-SNAPSHOT</version>
     <properties>
