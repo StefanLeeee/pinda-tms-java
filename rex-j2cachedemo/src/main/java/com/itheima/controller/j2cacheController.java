@@ -28,19 +28,54 @@ public class j2cacheController {
 
     @GetMapping("/getCacheData")
     public List<String> getCacheData() {
-        CacheObject cacheObject =cacheChannel.get(key,region);
+        CacheObject cacheObject =cacheChannel.get(region,key);
         if (cacheObject.getValue() == null) {
             List<String> data = new ArrayList<>();
             data.add("beijing");
             data.add("nanjing");
             data.add("shanghai");
             //将从数据库中获取的数据载入缓存
-            cacheChannel.set("rx", "city", data);
+            cacheChannel.set(region,key, data);
             return data;
         }
         return (List<String>) cacheObject.getValue();
-
     }
 
+    /**
+     * 清理指定缓存
+     * @return
+     */
+    @GetMapping("/evict")
+    public String evict() {
+        cacheChannel.evict(region, key);
+        return "evict success";
+    }
 
+    /**
+     * 清理指定区域中的 缓存数据
+     * 同时清理L1和L2两级缓存
+     *
+     * @return
+     */
+    @GetMapping("/clear")
+    public String clear() {
+        cacheChannel.clear(region);
+        return "clear success";
+    }
+
+    /**
+     * 判断缓存数据是否存在哪一级
+     * @return
+     */
+    @GetMapping("/exists")
+    public Boolean exists() {
+        boolean exists = cacheChannel.exists(region, key);
+        return exists;
+    }
+
+    @GetMapping("/check")
+    public int check() {
+        int check = cacheChannel.check(region, key);
+        return check;
+    }
 }
