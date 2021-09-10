@@ -1,3 +1,9 @@
+pinda:
+  redis:
+    ip: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
 spring:
   redis:
     host: ${pinda.redis.ip}
@@ -11,12 +17,12 @@ spring:
       discovery:
         server-addr: 1.15.243.49:8848
         group: pinda-tms
-        namespace: 6107f553-3214-48d8-89c3-945f8446e3d9
+        namespace: 4a0f8863-aa82-4088-abd2-79b1d12f189d
       config:
         server-addr: 1.15.243.49:8848
         file-extension: yml
         group: pinda-tms
-        namespace: 6107f553-3214-48d8-89c3-945f8446e3d9
+        namespace: 4a0f8863-aa82-4088-abd2-79b1d12f189d
 
   # jackson时间格式化
   jackson:

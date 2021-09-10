@@ -16,7 +16,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("pd_member")
-public class Member implements Serializable{
+public class Member implements Serializable {
 
     @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;

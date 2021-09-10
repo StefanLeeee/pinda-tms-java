@@ -1,8 +1,8 @@
 package com.itheima.pinda.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.itheima.j2cache.annotation.Cache;
-import com.itheima.j2cache.annotation.CacheEvictor;
+//import com.itheima.j2cache.annotation.Cache;
+//import com.itheima.j2cache.annotation.CacheEvictor;
 import com.itheima.pinda.common.utils.PageResponse;
 import com.itheima.pinda.common.utils.Result;
 import com.itheima.pinda.entity.AddressBook;
@@ -57,7 +57,7 @@ public class AddressBookController {
      * @return
      */
     @GetMapping("detail/{id}")
-    @Cache(region = "addressBook",key = "ab",params = "id")
+    //@Cache(region = "addressBook",key = "ab",params = "id")
     public AddressBook detail(@PathVariable(name = "id") String id) {
        AddressBook addressBook = addressBookService.getById(id);
         return addressBook;
@@ -99,7 +99,7 @@ public class AddressBookController {
      * @return
      */
     @PutMapping("/{id}")
-    @CacheEvictor(value = {@Cache(region = "addressBook",key = "ab",params = "1.id")})
+    //@CacheEvictor(value = {@Cache(region = "addressBook",key = "ab",params = "1.id")})
     public Result update(@PathVariable(name = "id") String id, @RequestBody AddressBook entity) {
         entity.setId(id);
         if (1 == entity.getIsDefault()) {
@@ -119,7 +119,7 @@ public class AddressBookController {
      * @return
      */
     @DeleteMapping("/{id}")
-    @CacheEvictor({@Cache(region = "addressBook",key = "ab",params = "id")})
+    //@CacheEvictor({@Cache(region = "addressBook",key = "ab",params = "id")})
     public Result del(@PathVariable(name = "id") String id) {
         boolean result = addressBookService.removeById(id);
         if (result) {

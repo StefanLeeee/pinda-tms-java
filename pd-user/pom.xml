@@ -14,16 +14,16 @@
 	<description>基础服务</description>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.itheima</groupId>
-			<artifactId>pd-auth-entity</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.itheima</groupId>
-			<artifactId>pd-auth-api</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.itheima</groupId>-->
+<!--			<artifactId>pd-auth-entity</artifactId>-->
+<!--			<version>1.0.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.itheima</groupId>-->
+<!--			<artifactId>pd-auth-api</artifactId>-->
+<!--			<version>1.0.0</version>-->
+<!--		</dependency>-->
 		<!--项目依赖-->
 		<dependency>
 			<groupId>com.itheima</groupId>
@@ -126,6 +126,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 	</dependencies>
 
 	<build>

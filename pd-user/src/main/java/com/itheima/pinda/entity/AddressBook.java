@@ -13,13 +13,17 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
+ * @author Zhang
+ * @date 9/9/2021 10:32 AM
+ * @description
  * 地址簿
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("pd_address_book")
-public class AddressBook implements Serializable{
+public class AddressBook implements Serializable {
+
     @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
     /**
